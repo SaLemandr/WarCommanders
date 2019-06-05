@@ -30,10 +30,15 @@ class Warrior(Base):
         self.dmg = dmg
         self.hp = hp
         self.speed = speed
+        self.move_points = speed
 
     def attack(self, warrior):
         if self.dmg - warrior.armr > 0:
-            warrior.hp -= (self.dmg - warrior.armr)
+            damage = self.dmg - warrior.armr
+            warrior.hp -= damage
+        else:
+            damage = 0
+        return str(damage)
 
 
 Base.metadata.create_all(engine)
